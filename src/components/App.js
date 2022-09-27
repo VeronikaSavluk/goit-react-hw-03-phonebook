@@ -14,18 +14,11 @@ class App extends Component {
   }
 
   fillingOfPhonebook = (newContact) => {
-    newContact.id = `id-${this.contactId()}`;
+    console.log(newContact);
     this.setState(prevState => ({
       contacts: [newContact, ...prevState.contacts],
   }));
 }
-
-  contactId = () => {
-    const { contacts } = this.state;
-    return contacts.length > 0
-      ? Math.max.apply(null, contacts.map(({ id }) => Number(id.replace("id-", "")))) + 1
-      : 1;
-  }
 
   deleteContact = (needlessContact) => {
     this.setState(prevState => ({
