@@ -24,6 +24,7 @@ margin: 0;
 width: 65px;
 font-size: 9px;
 border-radius: 15px;
+border-color: #1E90FF;
 background-color: #1E90FF;
 color: #FFF8DC;
 `
