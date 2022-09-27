@@ -5,7 +5,8 @@ const ContactList = ({ contacts, onDeleteContact }) => {
             <List>
                 {contacts.map(({id, name, number}) => (
                     <ContactItem key={id}>
-                        <DataContact>{name}: {number}</DataContact>
+                        <DataContact>{name}:</DataContact>
+                        <DataContact>{number}</DataContact>
                         <Delete onClick={() => onDeleteContact(id)}>Delete</Delete>
                     </ContactItem>
                 ))}
