@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export const List = styled.ul`
-padding: 0;
+padding: 10px;
 margin: 0;
 list-style: none;
 `;
 
 export const ContactItem = styled.li`
-display: flex;
-justify-content: space-between;
+display: grid;
+grid-template-columns: 155px 80px 65px;
 margin-bottom: 5px;
 padding: 0;
 `;
