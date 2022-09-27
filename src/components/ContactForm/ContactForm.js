@@ -64,7 +64,7 @@ render() {
                     title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                     id={NameInputId}
                     />
-                    <Error name="name" component="div" />
+                    <Error name="name" render={msg => <div>{`Please, enter Name`}</div>} />
                     <NameLable htmlFor={NumberInputId}>Number</NameLable>
                     <Input
                     type="tel"
@@ -73,7 +73,7 @@ render() {
                     title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                     id={NumberInputId}
                 />
-                    <Error name="number" component="div" />
+                    <Error name="number" render={msg => <div>{`Please, enter Number`}</div>}/>
                     <SubitForm type="submit" name="Add contact">Add contact</SubitForm>
             </Wrapper>
             </Formik>
