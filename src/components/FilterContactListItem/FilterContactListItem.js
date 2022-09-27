@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 
-import { ContactBook } from './FilterContactListItem.styled';
-import { NameLable, NameInput } from '../ContactForm/ContactForm.styled';
+import { ContactBook, NameInput } from './FilterContactListItem.styled';
+import { NameLable } from '../ContactForm/ContactForm.styled';
 
 const FilterContactList = ({ query, onChange }) => {
     const QueryInputId = nanoid();
