@@ -14,12 +14,18 @@ class App extends Component {
   }
 
   fillingOfPhonebook = (newContact) => {
-    const { contacts } = this.state;
-    newContact.id = `id-${contacts.length + 1}`;
+    newContact.id = `id-${this.contactId()}`;
     this.setState(prevState => ({
-    contacts: [newContact, ...prevState.contacts],
+      contacts: [newContact, ...prevState.contacts],
   }));
 }
+
+  contactId = () => {
+    const { contacts } = this.state;
+    return contacts.length > 0
+      ? Math.max.apply(null, contacts.map(({ id }) => Number(id.replace("id-", "")))) + 1
+      : 1;
+  }
 
   deleteContact = (needlessContact) => {
     this.setState(prevState => ({
@@ -40,16 +46,16 @@ class App extends Component {
 }
 
   render() {
-  const { filter } = this.state;
+  const { filter, contacts } = this.state;
 
   return (
   <Container>
     <h1>Phonebook</h1>
-      <ContactForm onSubmit={this.fillingOfPhonebook} />
-      <Title>Contacts</Title>
-      <FilterContactList query={filter} onChange={this.searchContact}/>
-      <ContactList contacts={this.filteredContactList()} onDeleteContact={this.deleteContact} />
-    </Container>
+      <ContactForm contacts={contacts}  onSubmit={this.fillingOfPhonebook} />
+    <Title>Contacts</Title>
+    <FilterContactList query={filter} onChange={this.searchContact}/>
+    <ContactList contacts={this.filteredContactList()} onDeleteContact={this.deleteContact} />
+  </Container>
 )
   }
 }
