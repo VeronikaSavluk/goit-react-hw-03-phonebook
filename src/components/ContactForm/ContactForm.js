@@ -1,34 +1,44 @@
 import React, {Component} from "react";
 import { nanoid } from 'nanoid';
+import { Formik } from 'formik';
 
 import { Wrapper, NameLable, NameInput, SubitForm } from './ContactForm.styled';
 
 class ContactForm extends Component {
 
-NameInputId = nanoid();
-NumberInputId = nanoid();
+    NameInputId = nanoid();
+    NumberInputId = nanoid();
 
-state = {
+    state = {
     name: '',
     number: ''
 }
 
-handleChange = e => {
+    handleChange = e => {
     const { name, value } = e.target;
     this.setState({
       [name]: value
     });
 }
 
-handleSubmit = e => {
-    e.preventDefault();
-    const { name, number } = this.state;
-    if (name === '' || number === '') {
-        return;
-    } else {
-        this.props.onSubmit(this.state);
-        this.reset();
-    }
+    handleSubmit = () => {
+        const { name, number } = this.state;
+        const contactName = this.props.contacts.map(contact => contact.name);
+    if (number === '' && name === '') {
+            alert(`Please, enter contact details!`);
+    } else
+        if (number === '') {
+        alert(`Please, enter number!`);
+        } else
+            if (name === '') {
+        alert(`Please, enter name!`);
+            } else
+                if (contactName.includes(name)) {
+                alert(`${name} is already in contacts`);
+                } else {
+                    this.props.onSubmit(this.state);
+                    this.reset();
+                    }
 }
 
 reset = () => {
@@ -40,8 +50,10 @@ render() {
     const { name, number } = this.state;
     const { NameInputId, NumberInputId } = this;
 
-    return(
-        <Wrapper onSubmit={this.handleSubmit}>
+    return (
+        <div>
+            <Formik initialValues={this.state} onSubmit={this.handleSubmit}>
+                <Wrapper>
           <NameLable htmlFor={NameInputId}>Name</NameLable>
             <NameInput
               type="text"
@@ -63,7 +75,9 @@ render() {
               onChange={this.handleChange}
 />
         <SubitForm type="submit" name="Add contact">Add contact</SubitForm>
-        </Wrapper>
+            </Wrapper>
+            </Formik>
+            </div>
     );
     }
 }
