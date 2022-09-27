@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Form, Field, ErrorMessage } from 'formik';
+import { Form, Field } from 'formik';
 
 export const Wrapper = styled(Form)`
 display: flex;
@@ -40,7 +40,8 @@ background-color: #1E90FF;
 color: #FFF8DC;
 `;
 
-export const Error = styled(ErrorMessage)`
+export const Error = styled.div`
 margin-bottom: 10px;
-font-size: 12px;
+font-size: 10px;
+color: #8B0000;
 `;

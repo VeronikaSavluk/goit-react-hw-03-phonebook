@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from "react";
 import { nanoid } from 'nanoid';
-import {Formik} from 'formik';
+import {ErrorMessage, Formik} from 'formik';
 import * as yup from 'yup';
 
 import { Wrapper, NameLable, Input, Error, SubitForm } from './ContactForm.styled';
@@ -64,7 +64,7 @@ render() {
                     title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                     id={NameInputId}
                     />
-                    <Error name="name" render={msg => <div>{`Please, enter Name`}</div>} />
+                    <ErrorMessage name="name" render={msg => <Error>{`Please, enter Name`}</Error>} />
                     <NameLable htmlFor={NumberInputId}>Number</NameLable>
                     <Input
                     type="tel"
@@ -73,7 +73,7 @@ render() {
                     title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                     id={NumberInputId}
                 />
-                    <Error name="number" render={msg => <div>{`Please, enter Number`}</div>}/>
+                    <ErrorMessage name="number" render={msg => <Error>{`Please, enter Number`}</Error>}/>
                     <SubitForm type="submit" name="Add contact">Add contact</SubitForm>
             </Wrapper>
             </Formik>
