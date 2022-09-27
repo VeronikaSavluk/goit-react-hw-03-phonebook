@@ -27,21 +27,15 @@ class ContactForm extends Component {
         const contactName = this.props.contacts.map(contact => contact.name);
 
     if (number === '' && name === '') {
-            alert(`Please, enter contact details!`);
+        alert(`Please, enter contact details!`);
     } else
-        if (number === '') {
-        alert(`Please, enter number!`);
-        } else
-            if (name === '') {
-        alert(`Please, enter name!`);
-            } else
-                if (contactName.includes(name)) {
-                alert(`${name} is already in contacts`);
-                } else {
-                    values.id = `id-${this.contactId()}`;
-                    this.props.onSubmit(values);
-                    resetForm();
-                    }
+        if (contactName.includes(name)) {
+        alert(`${name} is already in contacts`);
+        } else {
+            values.id = `id-${this.contactId()}`;
+            this.props.onSubmit(values);
+            resetForm();
+            }
 }
 
     contactId = () => {
@@ -78,7 +72,7 @@ render() {
                     pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                     title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                     id={NumberInputId}
-                    />
+                />
                     <Error name="number" component="div" />
                     <SubitForm type="submit" name="Add contact">Add contact</SubitForm>
             </Wrapper>
