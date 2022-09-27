@@ -1,9 +1,11 @@
 import styled from 'styled-components';
-import { Field, Form } from 'formik';
+import { Form, Field, ErrorMessage } from 'formik';
 
 export const Wrapper = styled(Form)`
 display: flex;
 flex-direction: column;
+justify-content: space-between;
+height: 200px;
 margin: 0;
 padding: 10px;
 border: 2px solid #004D00;
@@ -17,14 +19,14 @@ margin-bottom: 10px;
 font-size: 16px;
 `;
 
-export const NameInput = styled(Field)`
+export const Input = styled(Field)`
 margin-bottom: 10px;
 padding: 4px;
 font-size: 12px;
 background: #FFF8DC;
 border: none;
 border-radius: 3px;
-;`
+`;
 
 export const SubitForm = styled.button`
 margin-top: 10px;
@@ -36,4 +38,9 @@ border: 1px solid #1E90FF;
 border-radius: 15px;
 background-color: #1E90FF;
 color: #FFF8DC;
+`;
+
+export const Error = styled(ErrorMessage)`
+margin-bottom: 10px;
+font-size: 12px;
 `;
