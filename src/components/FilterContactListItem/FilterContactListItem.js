@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 
 import { ContactBook, NameInput } from './FilterContactListItem.styled';
@@ -18,6 +19,11 @@ const FilterContactList = ({ query, onChange }) => {
 />
         </ContactBook>
     )
+}
+FilterContactList.propTypes = {
+    query: PropTypes.string.isRequired,
+    onChange: PropTypes.func,
+    QueryInputId: PropTypes.func,
 }
 
 export default FilterContactList;
