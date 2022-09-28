@@ -21,15 +21,10 @@ class ContactForm extends Component {
     state = this.initialValues;
 
     handleSubmit = (values, { resetForm }) => {
-        const { name, number } = values;
-        console.log(this.props.contacts);
-
+        const { name } = values;
         const contactName = this.props.contacts.map(contact => contact.name);
 
-    if (number === '' && name === '') {
-        alert(`Please, enter contact details!`);
-    } else
-        if (contactName.includes(name)) {
+    if (contactName.includes(name)) {
         alert(`${name} is already in contacts`);
         } else {
             values.id = `id-${this.contactId()}`;
