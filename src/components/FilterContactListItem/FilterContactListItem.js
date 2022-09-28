@@ -11,15 +11,16 @@ const FilterContactList = ({ query, onChange }) => {
         <ContactBook>
             <NameLable htmlFor={QueryInputId}>Find contacts by name</NameLable>
             <NameInput
-              type="text"
+                type="text"
                 name="query"
                 value={query}
-              id={QueryInputId}
-              onChange={onChange}
-/>
+                id={QueryInputId}
+                onChange={onChange}
+        />
         </ContactBook>
     )
 }
+
 FilterContactList.propTypes = {
     query: PropTypes.string.isRequired,
     onChange: PropTypes.func,
