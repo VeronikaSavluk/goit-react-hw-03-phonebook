@@ -14,10 +14,26 @@ class App extends Component {
   }
 
   fillingOfPhonebook = (newContact) => {
-    console.log(newContact);
-    this.setState(prevState => ({
-      contacts: [newContact, ...prevState.contacts],
-  }));
+    const { name } = newContact;
+    const { contacts } = this.state;
+    const contactName = contacts.map(contact => contact.name);
+
+    if (contactName.includes(name)) {
+      alert(`${name} is already in contacts`);
+    } else {
+      newContact.id = `id-${this.contactId()}`;
+      this.setState(prevState => ({
+        contacts: [newContact, ...prevState.contacts],
+      }));
+    }
+}
+
+  contactId = () => {
+    const { contacts } = this.state;
+    console.log(contacts);
+    return contacts.length > 0
+      ? Math.max.apply(null, contacts.map(({ id }) => Number(id.replace("id-", "")))) + 1
+      : 1;
 }
 
   deleteContact = (needlessContact) => {

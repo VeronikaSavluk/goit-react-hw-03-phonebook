@@ -21,26 +21,11 @@ class ContactForm extends Component {
     state = this.initialValues;
 
     handleSubmit = (values, { resetForm }) => {
-        const { name } = values;
-        const contactName = this.props.contacts.map(contact => contact.name);
-
-    if (contactName.includes(name)) {
-        alert(`${name} is already in contacts`);
-        } else {
-            values.id = `id-${this.contactId()}`;
-            this.props.onSubmit(values);
-            resetForm();
-            }
+        this.props.onSubmit(values);
+        resetForm();
 }
 
-    contactId = () => {
-    const { contacts } = this.props;
-    return contacts.length > 0
-      ? Math.max.apply(null, contacts.map(({ id }) => Number(id.replace("id-", "")))) + 1
-      : 1;
-}
-
-render() {
+    render() {
     const { NameInputId, NumberInputId, handleSubmit,
         schema,
     } = this;
