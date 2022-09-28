@@ -16,23 +16,22 @@ class ContactForm extends Component {
     schema = yup.object().shape({
         name: yup.string().required(),
         number: yup.string().required(),
-  })
+    })
 
     state = this.initialValues;
 
     handleSubmit = (values, { resetForm }) => {
         this.props.onSubmit(values);
         resetForm();
-}
+    }
 
     render() {
-    const { NameInputId, NumberInputId, handleSubmit,
-        schema,
-    } = this;
+        const { NameInputId, NumberInputId, handleSubmit, schema } = this;
 
-    return (
+        return (
         <div>
-            <Formik initialValues={this.initialValues}
+            <Formik
+                initialValues={this.initialValues}
                 validationSchema={schema}
                 onSubmit={handleSubmit}>
                 <Wrapper>
@@ -57,8 +56,8 @@ class ContactForm extends Component {
                     <SubitForm type="submit" name="Add contact">Add contact</SubitForm>
             </Wrapper>
             </Formik>
-            </div>
-    );
+        </div>
+        );
     }
 }
 
