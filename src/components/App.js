@@ -16,16 +16,26 @@ class App extends Component {
   fillingOfPhonebook = (newContact) => {
     const { name } = newContact;
     const { contacts } = this.state;
-    const contactName = contacts.map(contact => contact.name);
+    const existentName = contacts.find(contact => contact.name === name);
 
-    if (contactName.includes(name)) {
+    if (existentName) {
       alert(`${name} is already in contacts`);
     } else {
       newContact.id = `id-${this.contactId()}`;
       this.setState(prevState => ({
         contacts: [newContact, ...prevState.contacts],
       }));
-    }
+    };
+
+    // const otherContacts = contacts.filter(contact => contact.name !== name);
+    // newContact.id = `id-${this.contactId()}`;
+
+    // this.setState({ contacts: [newContact, ...otherContacts] });
+
+    // if (existentName) {
+    //   alert(`${name} is already in contacts`);
+    // };
+
   }
 
   contactId = () => {
